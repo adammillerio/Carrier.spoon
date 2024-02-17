@@ -43,6 +43,7 @@ spoon.SpoonInstall:andUse("Carrier", {
     repo = "adammillerio",
     start = true,
     config = {
+        carryDelay = 10,
         apps = {
             ["Discord"] = {carry = true},
             ["Reminders"] = {carry = true}
@@ -51,15 +52,13 @@ spoon.SpoonInstall:andUse("Carrier", {
 }
 ```
 
-Now, the Discord and Reminders applications will be moved to the current Space whenever it is changed. The apps are not focused so they will be behind whatever application was focused last in the Space.
+Now, the Discord and Reminders applications will be moved to the current Space whenever it is changed after a delay of 10 seconds. The apps are not focused so they will be behind whatever application was focused last in the Space. The default `carryDelay` is 5 seconds.
 
 ## Manual
 
 Download the latest WindowCache release from [here.](https://github.com/adammillerio/Spoons/raw/main/Spoons/WindowCache.spoon.zip)
 
 Download the latest EnsureApp release from [here.](https://github.com/adammillerio/Spoons/raw/main/Spoons/EnsureApp.spoon.zip)
-
-Download the latest MenuBarApps release from [here.](https://github.com/adammillerio/Spoons/raw/main/Spoons/MenuBarApps.spoon.zip)
 
 Unzip them all and either double click to load the Spoons or place the contents manually in `~/.hammerspoon/Spoons`
 
@@ -87,6 +86,7 @@ hs.loadSpoon("Carrier")
 hs.spoons.use("Carrier", {
     start = true,
     config = {
+        carryDelay = 10,
         apps = {
             ["Discord"] = {carry = true},
             ["Reminders"] = {carry = true}
