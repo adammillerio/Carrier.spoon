@@ -7,7 +7,7 @@
 --- This uses a hs.window.filter to detect windows that have gone out of focus. Then,
 --- if they are configured to be "swept" in the apps config, they will be automatically
 --- hidden if they remain out of focus after sweepCheckInterval (default 15 seconds).
---- 
+---
 --- README with example usage: [README.md](https://github.com/adammillerio/Carrier.spoon/blob/main/README.md)
 local Carrier = {}
 
@@ -19,6 +19,12 @@ Carrier.version = "0.0.2"
 Carrier.author = "Adam Miller <adam@adammiller.io>"
 Carrier.homepage = "https://github.com/adammillerio/Carrier.spoon"
 Carrier.license = "MIT - https://opensource.org/licenses/MIT"
+
+-- Dependency Libraries
+local fnutils = require("hs.fnutils")
+local timer = require("hs.timer")
+local spaces = require("hs.spaces")
+local inspect = require("hs.inspect")
 
 -- Dependency Spoons
 -- EnsureApp is used for handling app movements when showing/hiding.
@@ -78,13 +84,13 @@ function Carrier:init() self.carryApps = {} end
 -- Inputs are the callback fn and any arguments to be applied after the instance
 -- reference.
 function Carrier:_instanceCallback(callback, ...)
-    return hs.fnutils.partial(callback, self, ...)
+    return fnutils.partial(callback, self, ...)
 end
 
 -- Carry all configured apps. This just calls ensureApp on every configured app,
 -- disabling focus so they do not show up in front on the new space.
 function Carrier:_carryApps()
-    self.logger.vf("Carrying apps: %s", hs.inspect(self.carryApps))
+    self.logger.vf("Carrying apps: %s", inspect(self.carryApps))
     for _, app in ipairs(self.carryApps) do
         self.logger.vf("Carrying app: %s", app)
         -- Disable app focus since we don't want that on carry, same for opening,
