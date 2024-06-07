@@ -15,7 +15,7 @@ Carrier.__index = Carrier
 
 -- Metadata
 Carrier.name = "Carrier"
-Carrier.version = "0.0.2"
+Carrier.version = "0.0.3"
 Carrier.author = "Adam Miller <adam@adammiller.io>"
 Carrier.homepage = "https://github.com/adammillerio/Carrier.spoon"
 Carrier.license = "MIT - https://opensource.org/licenses/MIT"
